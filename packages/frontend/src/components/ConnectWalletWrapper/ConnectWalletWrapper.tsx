@@ -1,6 +1,7 @@
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 
+import config from "../../../config.json";
 import { useIsWagmiConnected } from "../../hooks/useIsWagmiConnected";
 import { ConnectWallet } from "../ConnectWallet";
 import { Modal } from "../Modal";
@@ -19,7 +20,15 @@ export const ConnectWalletWrapper: React.FC<ConnectWalletWrapperProps> = ({
     <Box>
       {!isWagmiConnected && (
         <Box>
-          <Button width="full" onClick={onOpen}>
+          <Button
+            width="full"
+            variant={config.styles.button.variant}
+            rounded={config.styles.button.rounded}
+            size={config.styles.button.size}
+            fontSize={config.styles.button.fontSize}
+            color={config.styles.text.color.primary}
+            onClick={onOpen}
+          >
             Connect Wallet
           </Button>
         </Box>

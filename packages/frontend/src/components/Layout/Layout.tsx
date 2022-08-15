@@ -1,6 +1,7 @@
 import { Box, Container, Flex } from "@chakra-ui/react";
 import React from "react";
 
+import config from "../../../config.json";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 
@@ -10,10 +11,10 @@ export interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Box>
+    <Box backgroundColor={config.styles.background.color.layout}>
       <Flex minHeight={"100vh"} direction={"column"}>
         <Header />
-        <Container flex={1} maxWidth="xl" p="12">
+        <Container flex={1} maxWidth="xl" p="4">
           {children}
         </Container>
         <Footer />

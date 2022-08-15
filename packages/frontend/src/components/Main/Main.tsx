@@ -1,25 +1,29 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Button, Stack } from "@chakra-ui/react";
 import React from "react";
 
+import config from "../../../config.json";
 import { ConnectWalletWrapper } from "../ConnectWalletWrapper";
 
 export const Main: React.FC = () => {
   return (
     <Box
-      boxShadow={useColorModeValue("md", "md-dark")}
+      boxShadow={"base"}
       borderRadius="2xl"
-      py="8"
+      p="4"
+      backgroundColor={config.styles.background.color.main}
     >
-      <Stack spacing="4" px="8">
+      <Stack spacing="4">
         <ConnectWalletWrapper>
-          <Button w="full">build something valuable</Button>
+          <Button
+            w="full"
+            variant={config.styles.button.variant}
+            rounded={config.styles.button.rounded}
+            size={config.styles.button.size}
+            fontSize={config.styles.button.fontSize}
+            color={config.styles.text.color.primary}
+          >
+            build something valuable
+          </Button>
         </ConnectWalletWrapper>
       </Stack>
     </Box>

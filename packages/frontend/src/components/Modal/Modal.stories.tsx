@@ -13,3 +13,7 @@ const Template: ComponentStory<typeof Component> = (args) => (
 );
 
 export const Modal = Template.bind({});
+Modal.args = {
+  isOpen: true,
+  children: "Internal component goes here",
+};

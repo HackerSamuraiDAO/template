@@ -13,3 +13,6 @@ const Template: ComponentStory<typeof Component> = (args) => (
 );
 
 export const ConnectWalletWrapper = Template.bind({});
+ConnectWalletWrapper.args = {
+  children: "Internal component goes here",
+};

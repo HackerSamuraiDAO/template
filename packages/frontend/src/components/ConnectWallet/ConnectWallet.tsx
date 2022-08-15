@@ -1,8 +1,10 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, Image, Stack } from "@chakra-ui/react";
 import React from "react";
 import { useConnect } from "wagmi";
 
-import { injectedConnector } from "../../lib/wagmi";
+import config from "../../../config.json";
+import { connectors } from "../../lib/wagmi";
+import { WalletKey } from "../../type/confg";
 
 export interface ConnectWalletProps {
   callback?: () => void;
@@ -11,8 +13,8 @@ export interface ConnectWalletProps {
 export const ConnectWallet: React.FC<ConnectWalletProps> = ({ callback }) => {
   const { connect } = useConnect();
 
-  const connectMetamask = () => {
-    connect({ connector: injectedConnector });
+  const connectWallet = (key: WalletKey) => {
+    connect({ connector: connectors[key] });
     if (callback) {
       callback();
     }
@@ -20,9 +22,25 @@ export const ConnectWallet: React.FC<ConnectWalletProps> = ({ callback }) => {
 
   return (
     <Box>
-      <Button width="full" onClick={connectMetamask}>
-        Metamask
-      </Button>
+      <Stack spacing="4">
+        {Object.entries(config.wallets).map(([key, wallet]) => {
+          return (
+            <Button
+              key={key}
+              width="full"
+              variant={config.styles.button.variant}
+              rounded={config.styles.button.rounded}
+              size={config.styles.button.size}
+              fontSize={config.styles.button.fontSize}
+              color={config.styles.text.color.primary}
+              onClick={() => connectWallet(key as WalletKey)}
+            >
+              <Image src={`/img/icons/${wallet.icon}`} alt={key} w="4" mr="2" />
+              {wallet.name}
+            </Button>
+          );
+        })}
+      </Stack>
     </Box>
   );
 };
