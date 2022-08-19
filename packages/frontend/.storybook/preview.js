@@ -1,5 +1,6 @@
 import "../src/styles/globals.css";
 import { WagmiConfig } from "wagmi";
+import { RecoilRoot } from "recoil";
 
 import { wagmiClient } from "../src/lib/wagmi";
 
@@ -13,10 +14,15 @@ export const parameters = {
   },
 };
 
+/*
+ * @dev: chakra provider is required since chakra provides storybook add-on
+ */
 export const decorators = [
   (Story) => (
-    <WagmiConfig client={wagmiClient}>
-      <Story />
-    </WagmiConfig>
+    <RecoilRoot>
+      <WagmiConfig client={wagmiClient}>
+        <Story />
+      </WagmiConfig>
+    </RecoilRoot>
   ),
 ];

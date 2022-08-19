@@ -2,7 +2,8 @@
   "app": {
     "name": "NAME",
     "description": "DESCRIPTION",
-    "uri": "http://localhost:3000"
+    "uri": "http://localhost:3000",
+    "defaultLog": "default log goes here"
   },
   "links": {
     "github": {
